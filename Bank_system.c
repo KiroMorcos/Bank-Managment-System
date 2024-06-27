@@ -4,7 +4,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
-#include <direct.h>
 #define MAX_ACCOUNTS 100
 #define Max_Attempts 5
 int actual_accounts;
@@ -46,7 +45,6 @@ int Login()
     do
     {
         attempts++;
-        printf("---------------------------------\n");
         printf("Enter Username :");
         gets(userinput.name);
         printf("Enter Password :");
@@ -57,25 +55,19 @@ int Login()
             if (strcmp(userinput.name, readuser.name) == 0 && strcmp(userinput.password, readuser.password) == 0)
             {
                 fclose(f);
-                printf("---------------------------------\n");
                 printf("Logged In Successfully .\n");
-                printf("---------------------------------\n");
                 return 1;
             }
         }
-        printf("---------------------------------\n");
         printf("Incorrect Username or Password .\n");
-        printf("---------------------------------\n");
         if (attempts > Max_Attempts)
         {
             printf("Too many login attempts!!\nPlease try again later .\n");
-            printf("---------------------------------\n");
             return 0;
         }
         do
         {
             printf("Choose an option:\n1-TRY AGAIN\n2-QUIT\n");
-            printf("---------------------------------\n");
             scanf("%d", &selection);
             getchar();
         } while (selection != 1 && selection != 2);
@@ -160,14 +152,12 @@ void Print_Accounts(account accounts[], int index)
         strcpy(month, "December");
         break;
     }
-    printf("---------------------------------\n");
     printf("Account Number : %s\n", accounts[index].account_number);
     printf("Name : %s\n", accounts[index].name);
     printf("E-mail : %s\n", accounts[index].email);
     printf("Balance : %.3lf$\n", accounts[index].balance);
     printf("Mobile : %s\n", accounts[index].mobile);
     printf("Date Opened : %s %d\n", month, accounts[index].date_opened.year);
-    printf("---------------------------------\n");
 }
 
 void SAVE(account accounts[])
@@ -455,7 +445,6 @@ void ADD(account accounts[])
         if (selection != 1 && selection != 2)
         {
             printf("Invalid selection .\n");
-            printf("---------------------------------\n");
         }
     } while (selection != 1 && selection != 2);
     if (selection == 1)
@@ -535,7 +524,6 @@ void Delete(account accounts[])
                 if (selection != 1 && selection != 2)
                 {
                     printf("Invalid selection .\n");
-                    printf("---------------------------------\n");
                 }
                 getchar();
             } while (selection != 1 && selection != 2);
@@ -609,7 +597,6 @@ void MODIFY(account accounts[])
             if (selection != 1 && selection != 2)
             {
                 printf("Invalid selection .\n");
-                printf("---------------------------------\n");
             }
             getchar();
         } while (selection != 1 && selection != 2);
@@ -642,7 +629,6 @@ void MODIFY(account accounts[])
             if (selection != 1 && selection != 2)
             {
                 printf("Invalid selection .\n");
-                printf("---------------------------------\n");
             }
             getchar();
         } while (selection != 1 && selection != 2);
@@ -675,7 +661,6 @@ void MODIFY(account accounts[])
             if (selection != 1 && selection != 2)
             {
                 printf("Invalid selection .\n");
-                printf("---------------------------------\n");
             }
             getchar();
         } while (selection != 1 && selection != 2);
@@ -709,7 +694,6 @@ void MODIFY(account accounts[])
             if (selection != 1 && selection != 2)
             {
                 printf("Invalid selection .\n");
-                printf("---------------------------------\n");
             }
             getchar();
         } while (selection != 1 && selection != 2);
@@ -764,7 +748,6 @@ void SEARCH(account accounts[])
     if (!flag)
     {
         printf("Specified Account Not Found .\n");
-        printf("---------------------------------\n");
     }
 }
 
@@ -772,7 +755,6 @@ void ADVANCED_SEARCH(account accounts[])
 {
     int i, j, k, flag, flag2 = 0;
     char Keyword[50];
-    printf("---------------------------------\n");
     printf("Enter Keyword :");
     gets(Keyword);
     int size = strlen(Keyword);
@@ -812,7 +794,6 @@ void ADVANCED_SEARCH(account accounts[])
     if (flag2 == 0)
     {
         printf("No Matches Found .\n");
-        printf("---------------------------------\n");
     }
 }
 
@@ -889,7 +870,6 @@ void WITHDRAW(account accounts[])
                 if (selection != 1 && selection != 2)
                 {
                     printf("Invalid selection .\n");
-                    printf("---------------------------------\n");
                 }
                 getchar();
             } while (selection != 1 && selection != 2);
@@ -984,7 +964,6 @@ void DEPOSIT(account accounts[])
                 if (selection != 1 && selection != 2)
                 {
                     printf("Invalid selection .\n");
-                    printf("---------------------------------\n");
                 }
                 getchar();
             } while (selection != 1 && selection != 2);
@@ -1113,7 +1092,6 @@ void TRANSFER(account accounts[])
                     if (selection != 1 && selection != 2)
                     {
                         printf("Invalid selection .\n");
-                        printf("---------------------------------\n");
                     }
                     getchar();
                 } while (selection != 1 && selection != 2);
@@ -1365,14 +1343,16 @@ int main(void)
     int selection;
     do
     {
+        printf("================================================\n");
+        printf("Welcome to Bank Management System\n");
+        printf("================================================\n");
         printf("Choose an option:\n1-LOGIN\n2-QUIT\n");
-        printf("=================================\n");
+        printf("================================================\n");
         scanf("%d", &selection);
         getchar();
         if (selection != 1 && selection != 2)
         {
             printf("Invalid selection .\n");
-            printf("---------------------------------\n");
         }
     } while (selection != 1 && selection != 2);
     if (selection == 1)
@@ -1383,11 +1363,11 @@ int main(void)
             do
             {
                 printf("Choose an option:\n");
-                printf("=================================\n");
+                printf("================================================\n");
                 printf("1-ADD\t\t\t2-DELETE\n3-MODIFY\t\t4-SEARCH\n5-ADVANCED SEARCH\t6-WITHDRAW\n7-DEPOSIT\t\t8-TRANSFER\n9-REPORT\t\t10-PRINT\n11-QUIT\n");
                 scanf("%d", &selection);
                 getchar();
-                printf("=================================\n");
+                printf("================================================\n");
                 switch (selection)
                 {
                 case 1:
@@ -1435,9 +1415,9 @@ int main(void)
                 }
                 if (!flag)
                 {
-                    printf("=================================\n");
+                    printf("================================================\n");
                     printf("INVALID SELECTION.\n");
-                    printf("=================================\n");
+                    printf("================================================\n");
                 }
             } while (1);
         }
